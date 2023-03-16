@@ -27,18 +27,23 @@ To train the model, run the following command:
 ```bash
 $ python main.py --num_subjects <number_of_subjects> --device <device_to_use>
 ```
-Replace `<number_of_subjects>` with the number of subjects you wish to process and `<device_to_use>` with the device you want to use for training, such as 'cuda:0' for the first available GPU.
+Replace <number_of_subjects> with the number of subjects you wish to process and <device_to_use> with the device you want to use for training, such as `'cuda:0'` for the first available GPU.
 
 
 ### Dependencies
 To run the code, you will need the following libraries:
 
 - `PyTorch`
-- `NumPy`
-- `scikit-learn`
-- `ema_pytorch`
-- `tqdm`
-- `argparse`
+
+NumPy
+
+scikit-learn
+
+ema_pytorch
+
+tqdm
+
+argparse
 
 Make sure to install these libraries before running the code.
 
