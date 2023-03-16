@@ -46,5 +46,6 @@ Make sure to install these libraries before running the code.
 ## Todo
 - [x] Item 1: Streamline the code
 - [ ] Item 2: Document the code
+- [ ] Item 3: Provide pre-trained models
 - [ ] Item 3: Test on public datasets
 - [ ] Item 4: Experiment on adding temporal convolutional layers
