@@ -22,13 +22,6 @@ The main function of this implementation (train) is responsible for training and
 
 6. Command Line Arguments: The main function accepts command-line arguments for specifying the number of subjects to process and the device to use for training (e.g., `'cuda:0'`).
 
-### Usage
-To train the model, run the following command:
-```bash
-$ python main.py --num_subjects <number_of_subjects> --device <device_to_use>
-```
-Replace `<number_of_subjects>` with the number of subjects you wish to process and `<device_to_use>` with the device you want to use for training, such as `'cuda:0'` for the first available GPU.
-
 ### Install Dependencies
 
 To install the required packages, run the following command:
@@ -36,6 +29,70 @@ To install the required packages, run the following command:
 ```bash
 $ pip install -r requirements.txt
 ```
+
+## Using a Conda Environment
+
+We encourage you to use a conda environment to manage your dependencies and create an isolated workspace for this project. This will help you avoid potential conflicts with other packages installed on your system.
+
+### Installing Conda
+
+If you don't have conda installed, you can download [Anaconda](https://www.anaconda.com/products/distribution) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html). Follow the installation instructions for your platform.
+
+### Setting Up a Conda Environment
+
+Once you have conda installed, you can create a new environment and install the required packages by following these steps:
+
+1. Clone the repository:
+```bash
+$ git clone https://github.com/diffe2023/Diff-E.git
+cd yourrepository
+```
+
+2. Create a new conda environment:
+
+```bash
+conda create --name your_environment_name python=3.8
+```
+
+
+Replace `your_environment_name` with a name of your choice.
+
+3. Activate the new environment:
+
+- On Windows:
+
+  ```
+  $ conda activate your_environment_name
+  ```
+
+- On macOS and Linux:
+
+  ```bash
+  $ source activate your_environment_name
+  ```
+
+4. Install the required packages:
+
+```bash
+$ conda install --file requirements.txt
+```
+
+This command will install the packages listed in the `requirements.txt` file.
+
+5. Now you can run the `main.py` script within the conda environment:
+
+```bash
+$ python main.py --num_subjects <number_of_subjects> --device <device_to_use>
+```
+Replace `<number_of_subjects>` with the number of subjects you wish to process and `<device_to_use>` with the device you want to use for training, such as `'cuda:0'` for the first available GPU.
+
+When you're done working with the conda environment, you can deactivate it with the following command:
+
+```bash
+$ conda deactivate
+```
+
+This will return you to your system's default environment.
 
 ## Todo
 - [x] Item 1: Streamline the code
