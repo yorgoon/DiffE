@@ -3,9 +3,9 @@ Decoding EEG signals for imagined speech is a challenging task due to the high-d
 
 This work is submitted to [Interspeech 2023](https://www.interspeech2023.org/). It is currently under review.
 ## EEG Classification with DDPM and Diff-E
-The code implementation is based on GitHub repositories [denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch) and [Conditional_Diffusion_MNIST](https://github.com/TeaPearce/Conditional_Diffusion_MNIST)
+The code implementation is based on repositories [denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch) and [Conditional_Diffusion_MNIST](https://github.com/TeaPearce/Conditional_Diffusion_MNIST).
 
-This repository provides an implementation of an EEG classification model using Denoising Diffusion Probabilistic Model (DDPM) and Diffusion-based Encoder (DiffE). The model is designed for classification of EEG signals into one of the 13 classes.
+This repository provides an implementation of an EEG classification model using Denoising Diffusion Probabilistic Model (DDPM) and Diffusion-based Encoder (Diff-E). The model is designed for 13-class classification of EEG signals for imagined speech.
 
 ### Main Function Description
 The main function of this implementation (train) is responsible for training and evaluating the EEG classification model. The implementation is divided into the following steps:
