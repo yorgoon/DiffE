@@ -45,13 +45,13 @@ Once you have conda installed, you can create a new environment and install the 
 1. Clone the repository:
 ```bash
 $ git clone https://github.com/diffe2023/Diff-E.git
-cd yourrepository
+$ cd yourrepository
 ```
 
 2. Create a new conda environment:
 
 ```bash
-conda create --name your_environment_name python=3.8
+$ conda create --name your_environment_name python=3.8
 ```
 
 
