@@ -27,7 +27,7 @@ To train the model, run the following command:
 ```bash
 $ python main.py --num_subjects <number_of_subjects> --device <device_to_use>
 ```
-Replace <number_of_subjects> with the number of subjects you wish to process and <device_to_use> with the device you want to use for training, such as 'cuda:0' for the first available GPU.
+Replace <pre><number_of_subjects></pre> with the number of subjects you wish to process and <device_to_use> with the device you want to use for training, such as 'cuda:0' for the first available GPU.
 
 
 ### Dependencies
