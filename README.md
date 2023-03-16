@@ -10,17 +10,17 @@ This repository provides an implementation of an EEG classification model using 
 ### Main Function Description
 The main function of this implementation (train) is responsible for training and evaluating the EEG classification model. The implementation is divided into the following steps:
 
-1. Loading and Preparing Data: The data is loaded using the load_data function, and split into training and testing sets using the get_dataloader function. The batch size and path to the data should be specified.
+1. Loading and Preparing Data: The data is loaded using the `load_data`, and split into training and testing sets using the `get_dataloader`. The batch size and path to the data should be specified.
 
 2. Defining the Model: The model consists of four main components: DDPM, Encoder, Decoder, and Linear Classifier. Their dimensions and parameters should be specified before training.
 
-3. Loss Functions and Optimizers: The implementation uses L1 Loss for training the DDPM and Mean Squared Error Loss for the classification task. RMSprop is used as the optimizer for both DDPM and DiffE, and CyclicLR is employed as the learning rate scheduler.
+3. Loss Functions and Optimizers: The implementation uses L1 Loss for training the DDPM and Mean Squared Error Loss for the classification task. `RMSprop` is used as the optimizer for both DDPM and Diff-E, and `CyclicLR` is employed as the learning rate scheduler.
 
 4. Exponential Moving Average (EMA): EMA is applied to the Linear Classifier to improve its generalization during training.
 
-5. Training and Evaluation: The model is trained for a specified number of epochs. During training, DDPM and DiffE are optimized separately, and their loss functions are combined using a weighting factor (alpha). The model is evaluated on the test set at regular intervals, and the best performance metrics are recorded.
+5. Training and Evaluation: The model is trained for a specified number of epochs. During training, DDPM and Diff-E are optimized separately, and their loss functions are combined using a weighting factor (α (alpha)). The model is evaluated on the test set at regular intervals, and the best performance metrics are recorded.
 
-6. Command Line Arguments: The main function accepts command-line arguments for specifying the number of subjects to process and the device to use for training (e.g., 'cuda:0').
+6. Command Line Arguments: The main function accepts command-line arguments for specifying the number of subjects to process and the device to use for training (e.g., `'cuda:0'`).
 
 ### Usage
 To train the model, run the following command:
