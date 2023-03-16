@@ -34,16 +34,11 @@ Replace <number_of_subjects> with the number of subjects you wish to process and
 To run the code, you will need the following libraries:
 
 - `PyTorch`
-
-NumPy
-
-scikit-learn
-
-ema_pytorch
-
-tqdm
-
-argparse
+- `NumPy`
+- `scikit-learn`
+- `ema_pytorch`
+- `tqdm`
+- `argparse`
 
 Make sure to install these libraries before running the code.
 
