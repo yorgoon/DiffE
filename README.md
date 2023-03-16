@@ -42,6 +42,13 @@ To run the code, you will need the following libraries:
 
 Make sure to install these libraries before running the code.
 
+### Install Dependencies
+
+To install the required packages, run the following command:
+
+```bash
+$ pip install -r requirements.txt
+```
 
 ## Todo
 - [x] Item 1: Streamline the code
