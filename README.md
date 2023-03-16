@@ -3,7 +3,7 @@ Decoding EEG signals for imagined speech is a challenging task due to the high-d
 
 This work is submitted to [Interspeech 2023](https://www.interspeech2023.org/)
 ## Code
-The code implementation is based on a GitHub repository called [Conditional_Diffusion_MNIST](https://github.com/TeaPearce/Conditional_Diffusion_MNIST)
+The code implementation is based on a GitHub repository [denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch) and [Conditional_Diffusion_MNIST](https://github.com/TeaPearce/Conditional_Diffusion_MNIST)
 ## Todo
 - [x] Item 1: Streamline the code
 - [ ] Item 2: Document the code
