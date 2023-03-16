@@ -13,17 +13,14 @@ from tqdm import tqdm
 from sklearn.metrics import f1_score, roc_auc_score, precision_score, recall_score, top_k_accuracy_score
 
 # Evaluate function
-def evaluate(ddpm, diffe, generator, device):
+def evaluate(encoder, fc, generator, device):
     labels = np.arange(0, 13)
     Y = []
     Y_hat = []
     for x, y in generator:
         x,y = x.to(device),y.type(torch.LongTensor).to(device)
-        x_hat, down, up, noise, t = ddpm(x, y)        
-        loss_ddpm = F.l1_loss(x_hat, x, reduction='none')
-        ddpm_out = x_hat, down, up, t
-        _, y_hat = diffe(x, ddpm_out)
-        # y_hat = diffe.fc(encoder_out[1])
+        encoder_out = encoder(x)
+        y_hat = fc(encoder_out[1])
         y_hat = F.softmax(y_hat, dim=1)
         
         Y.append(y.detach().cpu())
@@ -58,8 +55,8 @@ def train(args):
     # EEG data path
     root_dir = "Path-to-the-data"
     # Write performance metrics to file
-    output_dir = "performance-metric-path"
-    output_file = f"{output_dir}/{subject}.txt"
+    # output_dir = "performance-metric-path"
+    # output_file = f"{output_dir}/{subject}.txt"
 
     # Load data
     X, Y = load_data(root_dir=root_dir, subject=subject, session=1)
@@ -75,8 +72,8 @@ def train(args):
     encoder_dim = 256
     fc_dim = 512
 
-    ddpm_model = ConditionalUNet(in_channels=channels, n_feat=ddpm_dim, z_dim=encoder_dim, n_classes=13).to(device)
-    ddpm = DDPM(nn_model=ddpm_model, betas=(1e-6, 1e-2), n_T=n_T, device=device, drop_prob=0.1, gamma=False, g_val=5).to(device)
+    ddpm_model = ConditionalUNet(in_channels=channels, n_feat=ddpm_dim).to(device)
+    ddpm = DDPM(nn_model=ddpm_model, betas=(1e-6, 1e-2), n_T=n_T, device=device).to(device)
     encoder = Encoder(in_channels=channels, dim=encoder_dim).to(device)
     decoder = Decoder(in_channels=channels, n_feat=ddpm_dim, encoder_dim=encoder_dim).to(device)
     fc = LinearClassifier(encoder_dim, fc_dim, emb_dim=num_classes).to(device)
@@ -97,7 +94,7 @@ def train(args):
     optim2 = optim.RMSprop(diffe.parameters(), lr=base_lr)
 
     # EMAs
-    diffe_ema = EMA(diffe,
+    fc_ema = EMA(diffe.fc,
         beta = 0.95,
         update_after_step = 100,
         update_every = 10,
@@ -122,7 +119,7 @@ def train(args):
                                             )
     # Train & Evaluate
     num_epochs = 500
-    test_period = 100
+    test_period = 1
     start_test = test_period
     alpha = 0.1
 
@@ -143,7 +140,7 @@ def train(args):
                 y_cat = F.one_hot(y, num_classes=13).type(torch.FloatTensor).to(device)
                 # Train DDPM
                 optim1.zero_grad()
-                x_hat, down, up, noise, t = ddpm(x, y)
+                x_hat, down, up, noise, t = ddpm(x)
                 
                 loss_ddpm = F.l1_loss(x_hat, x, reduction='none')
                 loss_ddpm.mean().backward()
@@ -165,7 +162,7 @@ def train(args):
                 scheduler2.step()
 
                 # EMA update
-                diffe_ema.update()
+                fc_ema.update()
             
             ############################## Test ###########################################
             with torch.no_grad():
@@ -175,7 +172,7 @@ def train(args):
                     ddpm.eval()
                     diffe.eval()
                     
-                    metrics_test = evaluate(ddpm, diffe_ema, test_loader, device)
+                    metrics_test = evaluate(diffe.encoder, fc_ema, test_loader, device)
 
                     acc = metrics_test['accuracy']
                     f1 = metrics_test['f1']
@@ -191,7 +188,7 @@ def train(args):
 
                     if best_acc_bool:
                         best_acc = acc
-                        torch.save(diffe.state_dict(), f'./models/diffe_{subject}.pt')
+                        # torch.save(diffe.state_dict(), f'./models/diffe_{subject}.pt')
                     if best_f1_bool:
                         best_f1 = f1
                     if best_recall_bool:
@@ -215,17 +212,17 @@ def train(args):
                     # writer.add_scalar(f"EEGNet/Precision/subject_{subject}", precision*100, epoch)
                     # writer.add_scalar(f"EEGNet/AUC/subject_{subject}", auc*100, epoch)
 
-                    if best_acc_bool or best_f1_bool or best_recall_bool or best_precision_bool or best_auc_bool:
-                        performance = {'subject': subject,
-                                    'epoch': epoch,
-                                    'accuracy': best_acc*100,
-                                    'f1_score': best_f1*100,
-                                    'recall': best_recall*100,
-                                    'precision': best_precision*100,
-                                    'auc': best_auc*100
-                                    }
-                        with open(output_file, 'a') as f:
-                            f.write(f"{performance['subject']}, {performance['epoch']}, {performance['accuracy']}, {performance['f1_score']}, {performance['recall']}, {performance['precision']}, {performance['auc']}\n")
+                    # if best_acc_bool or best_f1_bool or best_recall_bool or best_precision_bool or best_auc_bool:
+                    #     performance = {'subject': subject,
+                    #                 'epoch': epoch,
+                    #                 'accuracy': best_acc*100,
+                    #                 'f1_score': best_f1*100,
+                    #                 'recall': best_recall*100,
+                    #                 'precision': best_precision*100,
+                    #                 'auc': best_auc*100
+                    #                 }
+                    #     with open(output_file, 'a') as f:
+                    #         f.write(f"{performance['subject']}, {performance['epoch']}, {performance['accuracy']}, {performance['f1_score']}, {performance['recall']}, {performance['precision']}, {performance['auc']}\n")
                     description = f'Best accuracy: {best_acc*100:.2f}%'
                     pbar.set_description(f'Method ALL - Processing subject {subject} - {description}')
             pbar.update(1)
@@ -240,7 +237,7 @@ if __name__ == '__main__':
     
     # Parse command-line arguments
     args = parser.parse_args()
-    for i in range(1, args.num_subjects+1):
+    for i in range(2, args.num_subjects+1):
         subject = i
         args.subject = subject
         train(args)
