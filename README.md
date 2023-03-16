@@ -33,7 +33,7 @@ Replace <number_of_subjects> with the number of subjects you wish to process and
 ### Dependencies
 To run the code, you will need the following libraries:
 
-PyTorch
+- `PyTorch`
 
 NumPy
 
