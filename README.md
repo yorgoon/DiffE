@@ -68,7 +68,7 @@ Replace `your_environment_name` with a name of your choice.
 The following Python packages are required to run this project:
 
 - `einops`
-- `ema_pytorch
+- `ema_pytorch`
 - `mat73`
 - `numpy`
 - `scikit_learn`
