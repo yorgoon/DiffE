@@ -45,24 +45,17 @@ $ cd yourrepository
 ```bash
 $ conda create --name your_environment_name python=3.8
 ```
-
-
 Replace `your_environment_name` with a name of your choice.
 
 3. Activate the new environment:
-
 - On Windows:
-
   ```
   $ conda activate your_environment_name
   ```
-
 - On macOS and Linux:
-
   ```bash
   $ source activate your_environment_name
   ```
-
 4. Install the required packages:
 
 The following Python packages are required to run this project:
