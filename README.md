@@ -65,13 +65,15 @@ Replace `your_environment_name` with a name of your choice.
 
 4. Install the required packages:
 
-To install the required packages, run the following command:
+The following Python packages are required to run this project:
 
-```bash
-$ pip install -r requirements.txt
-```
-
-This command will install the packages listed in the `requirements.txt` file.
+- einops
+- ema_pytorch
+- mat73
+- numpy
+- scikit_learn
+- torch
+- tqdm
 
 5. Now you can run the `main.py` script within the conda environment:
 
