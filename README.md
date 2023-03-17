@@ -22,14 +22,6 @@ The main function of this implementation (train) is responsible for training and
 
 6. Command Line Arguments: The main function accepts command-line arguments for specifying the number of subjects to process and the device to use for training (e.g., `'cuda:0'`).
 
-### Install Dependencies
-
-To install the required packages, run the following command:
-
-```bash
-$ pip install -r requirements.txt
-```
-
 ## Using a Conda Environment
 
 We encourage you to use a conda environment to manage your dependencies and create an isolated workspace for this project. This will help you avoid potential conflicts with other packages installed on your system.
@@ -73,8 +65,10 @@ Replace `your_environment_name` with a name of your choice.
 
 4. Install the required packages:
 
+To install the required packages, run the following command:
+
 ```bash
-$ conda install --file requirements.txt
+$ pip install -r requirements.txt
 ```
 
 This command will install the packages listed in the `requirements.txt` file.
