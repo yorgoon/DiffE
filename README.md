@@ -67,13 +67,13 @@ Replace `your_environment_name` with a name of your choice.
 
 The following Python packages are required to run this project:
 
-- einops
-- ema_pytorch
-- mat73
-- numpy
-- scikit_learn
-- torch
-- tqdm
+- `einops`
+- `ema_pytorch
+- `mat73`
+- `numpy`
+- `scikit_learn`
+- `torch`
+- `tqdm`
 
 5. Now you can run the `main.py` script within the conda environment:
 
