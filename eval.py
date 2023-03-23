@@ -25,7 +25,6 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 parser = argparse.ArgumentParser()
 parser.add_argument('--model_path', type=str, help='path to the data loader file')
 parser.add_argument('--data_loader_path', type=str, help='path to the data loader file')
-# model_path = "G:/My Drive/KU/BTS/Interspeech 2023/repo/diffe2023/Diff-E/data_loader.pkl"
 
 n_T = 1000
 ddpm_dim = 128
