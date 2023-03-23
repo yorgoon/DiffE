@@ -85,7 +85,7 @@ This will return you to your system's default environment.
 
 ## Pre-trained Model Evaluation
 ### Download
-The pre-trained model and testset for subject2 is provided [here (model & testset)](https://file.io/8HhVpAdBzfXy) for download. 
+The pre-trained model and testset for subject 2 is provided [here (model & testset)](https://file.io/8HhVpAdBzfXy) for download. 
 
 ### Evaluation
 Here's an example command to run the script:
@@ -97,6 +97,6 @@ python eval.py --model_path model.pt --data_loader_path data_loader.pkl
 ## Todo
 - [x] Item 1: Streamline the code
 - [ ] Item 2: Document the code
-- [ ] Item 3: Provide pre-trained models
-- [ ] Item 3: Test on public datasets
-- [ ] Item 4: Experiment on adding temporal convolutional layers
+- [x] Item 3: Provide pre-trained models
+- [ ] Item 4: Test on public datasets
+- [ ] Item 5: Experiment on adding temporal convolutional layers
