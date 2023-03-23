@@ -85,7 +85,14 @@ This will return you to your system's default environment.
 
 ## Pre-trained Model Evaluation
 ### Download
-The pre-trained model and testset for subject2 is provided [here (model)](https://file.io/8HhVpAdBzfXy) and [here (dataset)]() for download. 
+The pre-trained model and testset for subject2 is provided [here (model & testset)](https://file.io/8HhVpAdBzfXy) for download. 
+
+### Evaluation
+Here's an example command to run the script:
+
+```bash
+python eval.py --model_path model.pt --data_loader_path data_loader.pkl
+```
 
 ## Todo
 - [x] Item 1: Streamline the code
