@@ -83,6 +83,10 @@ $ conda deactivate
 
 This will return you to your system's default environment.
 
+## Pre-trained Model Evaluation
+### Download
+The pre-trained model and testset for subject2 is provided [here (model)](https://file.io/8HhVpAdBzfXy) and [here (dataset)]() for download. 
+
 ## Todo
 - [x] Item 1: Streamline the code
 - [ ] Item 2: Document the code
