@@ -85,7 +85,7 @@ This will return you to your system's default environment.
 
 ## Pre-trained Model Evaluation
 ### Download
-The pre-trained model and testset for subject 2 is provided [here (model & testset)](https://file.io/8HhVpAdBzfXy) for download. 
+The pre-trained model and testset for subject 2 is provided [here (model)](https://anonymfile.com/7PzVe/diffe-2.pt) and [here (testset)](https://anonymfile.com/XPzxj/data-loader.pkl) for download. 
 
 ### Evaluation
 Here's an example command to run the script:
