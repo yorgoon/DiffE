@@ -91,7 +91,7 @@ The pre-trained model and testset for subject 2 is provided [here (model)](https
 Here's an example command to run the script:
 
 ```bash
-python eval.py --model_path model.pt --data_loader_path data_loader.pkl
+python evaluation.py --model_path model.pt --data_loader_path data_loader.pkl
 ```
 
 ## Todo
